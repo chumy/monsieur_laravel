@@ -10,6 +10,11 @@
         </p>
     </div>
 
-    @include('recetas.listaReceta')
-    
+            <listado-recetas-component></listado-recetas-component>
+ 
+
+@endsection
+
+@section('sidebar')
+    @parent
 @endsection

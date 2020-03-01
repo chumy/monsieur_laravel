@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Receta;
+use App\Medida;
 use Illuminate\Http\Request;
 
 class RecetaController extends Controller
@@ -11,15 +12,17 @@ class RecetaController extends Controller
         //$users = DB::table('users')->get();
         $recetas = Receta::all();
         $title = 'Listado de recetas';
+        
 //        return view('users.index')
 //            ->with('users', User::all())
 //            ->with('title', 'Listado de usuarios');
-        return view('recetas.index', compact('title', 'recetas'));
+        return view('index', compact('title', 'recetas'));
     }
 
     public function create()
     {
-        return view('recetas.create');
+        $medidas= Medida::all();
+        return view('recetas.create',compact('medidas'));
     }
 
     public function show()
@@ -33,14 +36,28 @@ class RecetaController extends Controller
     {
         $recetas = Receta::all();
         $title = 'Listado de recetas';
-        return view('recetas.index', compact('title', 'recetas'));
+        $medidas= Medida::all();
+        return view('recetas.index', compact('title', 'recetas','medidas'));
     }
 
     public function store()
     {
-        $recetas = Receta::all();
-        $title = 'Listado de recetas';
-        return view('recetas.index', compact('title', 'recetas'));
+        $data = request()->validate([
+            'nombre' => 'required',
+            'personas' => 'required',
+            'tiempo' => 'required',
+        ], [
+            'nombre.required' => 'El campo nombre es obligatorio',
+            'personas.required' => 'El campo personas es obligatorio',
+            'tiempo.required' => 'El campo tiempo es obligatorio'
+        ]);
+        Receta::create([
+            'nombre' => $data['nombre'],
+            'personas' => $data['personas'],
+            'tiempo' => $data['tiempo'],
+        ]);
+        return redirect()->route('recetas.index');
+
     }
 
     public function update()

@@ -79,11 +79,17 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
+
+            
+              <div id="app" class="content"><!--La equita id debe ser app, como hemos visto en app.js-->
+            
+                    <listado-recetas-component></listado-recetas-component>
+              </div>
+
+                <!--div class="title m-b-md">
                     Laravel
                 </div>
-
+                
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
@@ -92,8 +98,9 @@
                     <a href="https://nova.laravel.com">Nova</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                </div-->
             </div>
         </div>
+        <script src="{{asset('js/app.js')}}"></script> <!--Añadimos el js generado con webpack, donde se encuentra nuestro componente vuejs-->
     </body>
 </html>

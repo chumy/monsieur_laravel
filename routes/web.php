@@ -11,10 +11,13 @@
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
     //return 'Home';
-});
+});*/
+
+Route::get('/', 'RecetaController@index')->name('index');
 
 
 //Usuarios

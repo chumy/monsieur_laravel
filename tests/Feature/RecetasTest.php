@@ -44,4 +44,18 @@ class RecetasTest extends TestCase
             ->assertSee('Listado de recetas')
             ->assertSee('Receta 1');
     }
+
+        /** @test */
+        function receta_name_is_required()
+        {
+            $this->from('recetas/nueva')
+                ->post('/recetas/', [
+                    'nombre' => '',
+                    'personas' => '4',
+                    'tiempo' => '20'
+                ])
+                ->assertRedirect('recetas/nueva')
+                ->assertSessionHasErrors(['nombre' => 'El campo nombre es obligatorio']);
+            $this->assertEquals(0, Receta::count());
+        }
 }
