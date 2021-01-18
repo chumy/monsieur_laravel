@@ -2,3 +2,16 @@ body {
     padding-top: 56px;
   }
   
+  .vl {
+    border-left: 2px solid rgb(194, 194, 194);
+    height: 100%;
+    left: 100%;
+    margin-left: -3px;
+    top: 0;
+    margin:10% 5% 10% 5%;
+    
+  }
+
+  .img-icono {
+    height: 30%;
+  }

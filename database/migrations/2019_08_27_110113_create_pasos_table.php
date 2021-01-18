@@ -19,6 +19,7 @@ class CreatePasosTable extends Migration
             $table->text('descripcion');
             $table->integer('temperatura')->unsigned()->nullable();
             $table->integer('orden')->unsigned();
+            $table->integer('receta_id')->unisgned();
             $table->timestamps();
         });
     }

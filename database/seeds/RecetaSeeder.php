@@ -12,6 +12,12 @@ class RecetaSeeder extends Seeder
      */
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
+
+        Receta::truncate();
+
+        Schema::enableForeignKeyConstraints();
+
         factory(Receta::class)->create([
             'id' => 1,
             'nombre' => 'Masa de pizza',

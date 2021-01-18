@@ -15,4 +15,14 @@ class Receta extends Model
         'nombre', 'personas', 'tiempo',
     ];
 
+    public function ingredientes(){
+        return $this->belongsToMany('App\Ingrediente', 'ingrediente_receta')
+                    ->as('cantidades')
+                    ->withPivot('cantidad' );
+    }
+
+    public function pasos(){
+        return $this->hasMany('App\Paso');
+    }
+
 }

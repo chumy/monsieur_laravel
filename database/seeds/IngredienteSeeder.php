@@ -12,6 +12,12 @@ class IngredienteSeeder extends Seeder
      */
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
+
+        Ingrediente::truncate();
+
+        Schema::enableForeignKeyConstraints();
+        
         factory(Ingrediente::class)->create([
             'nombre' => 'sal',
         ]);

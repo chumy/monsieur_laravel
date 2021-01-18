@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRelIngPasoTable extends Migration
+class CreateIngredientePasoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateRelIngPasoTable extends Migration
      */
     public function up()
     {
-        Schema::create('rel_ing_paso', function (Blueprint $table) {
+        Schema::create('ingrediente_paso', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('cantidad');
+            $table->integer('ingrediente_id')->unisgned();
+            $table->integer('paso_id')->unisgned();
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateRelIngPasoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rel_ing_paso');
+        Schema::dropIfExists('ingrediente_paso');
     }
 }

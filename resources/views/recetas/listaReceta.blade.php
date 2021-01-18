@@ -19,11 +19,11 @@
             <td>{{ $receta->tiempo }}</td>
             <td>{{ $receta->personas }}</td>
             <td>
-                <form action="{{ route('recetas.destroy', $receta) }}" method="POST">
+                <form action="{{ route('receta.destroy', $receta) }}" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
-                    <a href="{{ route('recetas.show', $receta) }}" class="btn btn-link"><span class="oi oi-eye"></span></a>
-                    <a href="{{ route('recetas.edit', $receta) }}" class="btn btn-link"><span class="oi oi-pencil"></span></a>
+                    <a href="{{ route('receta.show', $receta) }}" class="btn btn-link"><span class="oi oi-eye"></span></a>
+                    <a href="{{ route('receta.edit', $receta) }}" class="btn btn-link"><span class="oi oi-pencil"></span></a>
                     <button type="submit" class="btn btn-link"><span class="oi oi-trash"></span></button>
                 </form>
             </td>

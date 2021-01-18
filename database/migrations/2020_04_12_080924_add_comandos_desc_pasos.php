@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class AddPasoReceta extends Migration
+class AddComandosDescPasos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddPasoReceta extends Migration
      */
     public function up()
     {
+        //
         Schema::table('pasos', function (Blueprint $table) {
-            $table->bigInteger('receta_id')->unsigned();
-            $table->foreign('receta_id')->references('id')->on('recetas');
+            //
+            $table->integer('velocidad')->unsigned()->nullable();
+
         });
     }
 
@@ -26,9 +28,10 @@ class AddPasoReceta extends Migration
      */
     public function down()
     {
+        //
         Schema::table('pasos', function (Blueprint $table) {
-            $table->dropForeign(['receta_id']);
-            $table->dropColumn('receta_id');
+            //
+            $table->dropColumn('velocidad');
         });
     }
 }

@@ -28,6 +28,17 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+//var autocomplete = require('./components/autocomplete.vue');
+
+//Vue.component('autocompletado',require('./components/autocomplete.vue').default);
+
+const files = require.context('./', true, /\.vue$/i)
+files.keys().map(key => {
+    const name = _.last(key.split('/')).split('.')[0]
+    return Vue.component(name, files(key))
+})
+
 const app = new Vue({
     el: '#app',
 });
+
